@@ -46,6 +46,7 @@ func main() {
 		приведение типов
 	*/
 	println("float to int conversion ", int(p))
+	println("int to string conversion ", string(48))
 
 	// комплексные числа
 	z := 2 + 3i

@@ -53,6 +53,8 @@ func main() {
 	fmt.Println(slice7)
 
 	fmt.Println("часть слайса", slice7[1:5], slice7[:2], slice7[10:])
+	slice8 := append(slice7[:2], slice7[10:]...)
+	fmt.Println("из кусков слайса", slice8)
 
 	a := [...]int{5, 6, 7}
 	sl8 := a[:]
