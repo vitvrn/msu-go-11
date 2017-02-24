@@ -24,6 +24,10 @@ func main() {
 	var world = "World"
 	println(hello, world)
 
+	//бинарные данные
+	var rawBinary byte = '\x27'
+	println("rawBinary", rawBinary)
+
 	// так нельзя
 	// var singleQuote string = 'Hello world'
 	// missing '
