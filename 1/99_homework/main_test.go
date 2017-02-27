@@ -19,7 +19,7 @@ func TestReturnFloat(t *testing.T) {
 
 func TestReturnIntArray(t *testing.T) {
 	if ReturnIntArray() != [3]int{1, 3, 4} {
-		t.Error("expected 'ok'")
+		t.Error("expected '[3]int{1, 3, 4}'")
 	}
 }
 
