@@ -6,6 +6,7 @@ import (
 
 // TODO: Реализовать вычисление Квадратного корня
 func Sqrt(x float64) float64 {
+	return x
 }
 
 func main() {

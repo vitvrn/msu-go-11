@@ -4,15 +4,17 @@ import "fmt"
 
 type memoizeFunction func(int, ...int) interface{}
 
+// TODO реализовать
 var fibonacci memoizeFunction
 var romanForDecimal memoizeFunction
 
 //TODO Write memoization function
 
 func memoize(function memoizeFunction) memoizeFunction {
-	return
+	return function
 }
 
+// TODO обернуть функции fibonacci и roman в memoize
 func init() {
 }
 
