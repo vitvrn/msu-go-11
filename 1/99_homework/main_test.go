@@ -48,36 +48,62 @@ func TestMergeSlices(t *testing.T) {
 }
 
 func TestGetMapValuesSortedByKey(t *testing.T) {
-	expected := []string{
-		"Январь",
-		"Февраль",
-		"Март",
-		"Апрель",
-		"Май",
-		"Июнь",
-		"Июль",
-		"Август",
-		"Сентябрь",
-		"Октябрь",
-		"Ноябрь",
-		"Декарь",
+
+	var cases = []struct {
+		expected []string
+		input    map[int]string
+	}{
+		{
+			expected: []string{
+				"Январь",
+				"Февраль",
+				"Март",
+				"Апрель",
+				"Май",
+				"Июнь",
+				"Июль",
+				"Август",
+				"Сентябрь",
+				"Октябрь",
+				"Ноябрь",
+				"Декарь",
+			},
+			input: map[int]string{
+				9:  "Сентябрь",
+				1:  "Январь",
+				2:  "Февраль",
+				10: "Октябрь",
+				5:  "Май",
+				7:  "Июль",
+				8:  "Август",
+				12: "Декарь",
+				3:  "Март",
+				6:  "Июнь",
+				4:  "Апрель",
+				11: "Ноябрь",
+			},
+		},
+
+		{
+			expected: []string{
+				"Зима",
+				"Весна",
+				"Лето",
+				"Осень",
+			},
+			input: map[int]string{
+				10: "Зима",
+				30: "Лето",
+				20: "Весна",
+				40: "Осень",
+			},
+		},
 	}
-	input := map[int]string{
-		9:  "Сентябрь",
-		1:  "Январь",
-		2:  "Февраль",
-		10: "Октябрь",
-		11: "Ноябрь",
-		5:  "Май",
-		7:  "Июль",
-		8:  "Август",
-		12: "Декарь",
-		3:  "Март",
-		4:  "Апрель",
-		6:  "Июнь",
-	}
-	result := GetMapValuesSortedByKey(input)
-	if !reflect.DeepEqual(result, expected) {
-		t.Error("expected", expected, "have", result)
+
+	for _, item := range cases {
+		result := GetMapValuesSortedByKey(item.input)
+		if !reflect.DeepEqual(result, item.expected) {
+			t.Error("expected", item.expected, "have", result)
+		}
 	}
 }
