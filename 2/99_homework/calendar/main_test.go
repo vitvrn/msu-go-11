@@ -30,7 +30,7 @@ func TestCurrentQuarter(t *testing.T) {
 	for _, test := range cases {
 		parsed, _ := time.Parse("2006-01-02", fmt.Sprintf("2015-%s-15", test.month))
 		calendar := NewCalendar(parsed)
-		actual := cal.CurrentQuarter()
+		actual := calendar.CurrentQuarter()
 		if actual != test.quarter {
 			t.Error("Month:", test.month,
 				"Expected Quarter:", test.quarter,
