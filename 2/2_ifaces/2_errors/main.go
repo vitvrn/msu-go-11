@@ -40,6 +40,14 @@ func main() {
 	default:
 		// unknown error
 	}
+
+	st := []int{10, 12, 15}
+	ist := make([]interface{}, len(st))
+	for i := range st {
+		ist[i] = st[i]
+	}
+
+	DoIfaces(ist...)
 }
 
 type MyError struct {
@@ -64,4 +72,8 @@ type temporary interface {
 func IsTemporary(err error) bool {
 	te, ok := err.(temporary)
 	return ok && te.Temporary()
+}
+
+func DoIfaces(slice ...interface{}) error {
+	return nil
 }

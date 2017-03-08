@@ -11,7 +11,7 @@ func main() {
 		fmt.Println("i'm not nill")
 	}
 
-	if f := getTrueNil(); f == nil {
+	if f := getNil("2nd"); f == nil {
 		fmt.Println("but i actually am nil")
 	}
 }

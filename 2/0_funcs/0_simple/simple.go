@@ -4,6 +4,11 @@ import "fmt"
 
 func main() {
 	showMeTheMoney()
+
+	stuff := []int{10, 2, 3}
+	res := sumMore(stuff...)
+
+	fmt.Println("Res", res)
 }
 
 func showMeTheMoney() {

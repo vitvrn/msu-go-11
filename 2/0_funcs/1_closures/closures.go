@@ -7,8 +7,12 @@ import (
 
 func main() {
 	myTimer := getTimer()
-	defer myTimer()
-	time.Sleep(1 * time.Second)
+
+	f := func() {
+		myTimer()
+	}
+
+	f()
 }
 
 func getTimer() func() {

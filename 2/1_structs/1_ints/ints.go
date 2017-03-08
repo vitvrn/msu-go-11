@@ -12,6 +12,8 @@ type MyStruct struct {
 
 type MyInt int
 
+type withFiles bool
+
 func (m MyInt) showYourSelf() {
 	fmt.Printf("%T %v\n", m, m)
 }

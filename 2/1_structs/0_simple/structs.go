@@ -4,7 +4,7 @@ import "fmt"
 
 // example represents a type with different fields.
 type example struct {
-	flag    bool
+	Flag    bool
 	counter int16
 	pi      float32
 }
@@ -21,13 +21,15 @@ func main() {
 	// Declare a variable of type example and init using
 	// a struct literal.
 	e2 := example{
-		flag:    true,
+		Flag:    true,
 		counter: 10,
 		pi:      3.141592,
 	}
 
+	e3 := example{}
+
 	// Display the field values.
-	fmt.Println("Flag", e2.flag)
+	fmt.Println("Flag", e2.Flag)
 	fmt.Println("Counter", e2.counter)
 	fmt.Println("Pi", e2.pi)
 }

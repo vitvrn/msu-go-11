@@ -21,6 +21,10 @@ func (p Person) GetName() string {
 	return p.Name
 }
 
+func (s SecretAgent) GetName() string {
+	return "CLASSIFIED"
+}
+
 func main() {
 	sa := SecretAgent{Person: Person{"James", "12312321321"}, LicenseToKill: true}
 
