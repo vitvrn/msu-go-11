@@ -1,3 +1,5 @@
+// Запуск go рутин
+// именованные функции или анонимные
 package main
 
 import (
@@ -18,9 +20,8 @@ func main() {
 		go process(i)
 	}
 
-	// ждем
-	var input string
-	fmt.Scanln(&input)
+	// Нужно дождаться заверешния выполнения
+	fmt.Scanln()
 
 }
 

@@ -1,3 +1,5 @@
+// Гораздо удобнее объединять каналы через select
+
 package main
 
 import (

@@ -1,3 +1,7 @@
+// Но, безопаснее использовать пакет sync, в частности структуру WaitGroup
+// У нее нет публичных полей, но есть 3 метода
+// Add увеличивает счетчик ожидаемых работ, Done декрементит,
+// Wait - блокируется, пока внутренний счетчик не станет равным 0
 package main
 
 import (
@@ -7,7 +11,7 @@ import (
 	"time"
 )
 
-func boring(wg *sync.WaitGroup, die chan bool) <-chan string { // Возвращаем канал строк только для чтения.
+func boring1(wg *sync.WaitGroup, die chan bool) <-chan string { // Возвращаем канал строк только для чтения.
 	c := make(chan string)
 	go func() {
 		for {
@@ -28,8 +32,8 @@ func main() {
 	die := make(chan bool)
 	var wg sync.WaitGroup
 	wg.Add(1)
-	res1 := boring(&wg, die)
-	res2 := boring(&wg, die)
+	res1 := boring1(&wg, die)
+	res2 := boring1(&wg, die)
 
 	for i := 0; i < 5; i++ {
 		// Читаем из канала
