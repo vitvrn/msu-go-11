@@ -17,6 +17,13 @@ func main() {
 		// Читаем пару строк из канала
 		fmt.Println(<-c, ",", <-c)
 	}
+
+	stuff := make(chan int, 7)
+	for i := 0; i < 19; i = i + 3 {
+		stuff <- i
+	}
+	close(stuff)
+	fmt.Println("Res", process(stuff))
 }
 
 func greet(c chan<- string) {
@@ -27,4 +34,11 @@ func greet(c chan<- string) {
 		c <- fmt.Sprintf("Владыка")
 		c <- fmt.Sprintf("Штурмовик")
 	}
+}
+
+func process(input <-chan int) (res int) {
+	for r := range input {
+		res += r
+	}
+	return
 }
