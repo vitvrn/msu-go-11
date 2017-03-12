@@ -60,7 +60,6 @@ var game0cases = [][]game0Case{
 }
 
 func TestGame0(t *testing.T) {
-	return
 	for caseNum, commands := range game0cases {
 
 		lastOutput := map[string]string{
