@@ -3,15 +3,20 @@ package main
 import (
 	"io/ioutil"
 	"net/http"
+	"log"
 )
 
 func main() {
+
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		path := r.URL.Path
 
 		// Создаем http клиент. В стуктуру можно передать таймаут, куки и прочую инфу о запросе
 		c := http.Client{}
-		resp, _ := c.Get("http://artii.herokuapp.com/make?text=" + path)
+		resp, err := c.Get("http://artii.herokuapp.com/make?text=" + path)
+		if err != nil {
+			log.Println(err)
+		}
 		// нужно закрыть тело, когда прочитаем что нужно
 		defer resp.Body.Close()
 

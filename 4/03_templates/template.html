@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>Список покупок</title>
+    <title>Todo List</title>
     <style>
         html, body {
             background-color: #f0f0f0;
@@ -41,11 +41,11 @@
 <body>
     <div class="root">
         {{range $index, $value := .}}
-            <div class="item{{if eq .Important true}} important{{end}}{{if eq .Done true}} done{{end}}">
+            <div class="item{{if eq .Done true}} done{{end}}">
                 <div class="title">{{.Name}}</div>
-                {{if eq .Done false}}
+                {{if IsNotDone .}}
                     <form action="/" method="post" class="form">
-                        <input type="hidden" name="name" value="{{$index}}"/>
+                        <input type="hidden" name="id" value="{{$index}}"/>
                         <button type="submit" class="button">Done</button>
                     </form>
                 {{end}}

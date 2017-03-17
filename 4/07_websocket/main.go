@@ -27,6 +27,7 @@ var upgrader = websocket.Upgrader{
 	},
 }
 
+// "Шина" событий, регистрация клиентов и рассылка сообщений идет отсюда
 type Bus struct {
 	register  chan *websocket.Conn
 	broadcast chan []byte
@@ -37,9 +38,11 @@ func (b *Bus) Run() {
 	for {
 		select {
 		case message := <-b.broadcast:
+			// каждому зарегистрированному клиенту шлем сообщение
 			for client := range b.clients {
 				w, err := client.NextWriter(websocket.TextMessage)
 				if err != nil {
+					// если достучаться до клиента не удалось, то удаляем его
 					delete(b.clients, client)
 					continue
 				}
@@ -47,6 +50,7 @@ func (b *Bus) Run() {
 				w.Write(message)
 			}
 		case client := <-b.register:
+			// регистрируем клиентов в мапе клиентов
 			log.Println("User registered")
 			b.clients[client] = true
 		}
@@ -63,6 +67,7 @@ func NewBus() *Bus {
 
 func runJoker(b *Bus) {
 	for {
+		// каждые 5 секунд ходим за шутками
 		<-time.After(5 * time.Second)
 		log.Println("Its joke time!")
 		b.broadcast <- getJoke()
@@ -93,6 +98,7 @@ func main() {
 	go runJoker(bus)
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		// апгрейд соединения
 		ws, err := upgrader.Upgrade(w, r, nil)
 		if err != nil {
 			log.Fatal(err)

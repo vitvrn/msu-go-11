@@ -1,33 +1,51 @@
 package main
 
 import (
-	"net/http"
 	"html/template"
+	"log"
+	"net/http"
 	"strconv"
 )
 
-type Product struct {
-	Name string `json:"name"`
-	Important bool `json:"important"`
-	Done bool `json:"done"`
+type Todo struct {
+	Name string
+	Done bool
+}
+
+func IsNotDone(todo Todo) bool {
+	return !todo.Done
 }
 
 func main() {
-	tmpl := template.Must(template.ParseFiles("template.html"))
+	tmpl, err := template.New("template.html").Funcs(template.FuncMap{"IsNotDone": IsNotDone}).ParseFiles("template.html")
+	if err != nil {
+		log.Fatal("Can not expand template", err)
+		return
+	}
 
-	products := []Product{
-		{"Молоко", false, false},
+	todos := []Todo{
+		{"Выучить Go", false},
+		{"Посетить лекцию по вебу", false},
+		{"...", false},
+		{"Profit", false},
 	}
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodPost {
-			param := r.FormValue("name")
+			// читаем из urlencoded запроса
+			param := r.FormValue("id")
+			// преобразуем строку в int
 			index, _ := strconv.ParseInt(param, 10, 0)
-			products[index].Done = true
+			todos[index].Done = true
 		}
-		tmpl.Execute(w, products)
+
+		// исполняем шаблон
+		err := tmpl.Execute(w, todos)
+		if err != nil {
+			// вернем 500 и напишем ошибку
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
 	})
 
 	http.ListenAndServe(":8081", nil)
 }
-
