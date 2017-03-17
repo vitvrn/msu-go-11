@@ -9,6 +9,11 @@ import (
 	"os"
 )
 
+// для вендоринга используется GB
+// сборка проекта осуществляется с помощью gb build
+// установка зависимостей - gb vendor fetch gopkg.in/telegram-bot-api.v4
+// установка зависимостей из манифеста - gb vendor restore
+
 type Joke struct {
 	ID   uint32 `json:"id"`
 	Joke string `json:"joke"`
