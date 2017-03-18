@@ -53,7 +53,7 @@ func getJoke() string {
 func main() {
 	// Heroku прокидывает порт для приложения в переменную окружения PORT
 	port := os.Getenv("PORT")
-	bot, err := tgbotapi.NewBotAPI("349666204:AAHrBbyKnNjSpFAhFgDZm2mR1bzLxmRSi-4")
+	bot, err := tgbotapi.NewBotAPI("270497469:AAFBnCofRqpaZIcBD_Re2N5aVbTcvWe8XDw")
 	if err != nil {
 		log.Fatal(err)
 	}

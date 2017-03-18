@@ -80,6 +80,7 @@ func getJoke() []byte {
 	if err != nil {
 		return []byte("jokes API not responding")
 	}
+	defer resp.Body.Close()
 	body, _ := ioutil.ReadAll(resp.Body)
 	joke := JokeResponse{}
 
