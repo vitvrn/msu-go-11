@@ -11,6 +11,12 @@
 В телеграме есть несколько вариантво ввода команд: настраиваемые кнопки на клавиатуре, инлайн-кнопки ( прямо в чате ), просто команды в чат. Реализовать можно любым способом.
 
 Доп материалы:
-Инструкция для раскладки на хероку: https://devcenter.heroku.com/articles/getting-started-with-go#introduction
-Используемая нами библиотека для обработки телеграм сообщений: https://github.com/go-telegram-bot-api/telegram-bot-api/tree/v4.6 ( https://godoc.org/gopkg.in/telegram-bot-api.v4 )
-Документация телеграма по ботам: https://core.telegram.org/bots, https://core.telegram.org/bots/api, https://core.telegram.org/bots/faq
+Инструкция для раскладки на хероку:
+* https://devcenter.heroku.com/articles/getting-started-with-go#introduction
+Используемая нами библиотека для обработки телеграм сообщений:
+* https://github.com/go-telegram-bot-api/telegram-bot-api/tree/v4.6
+* https://godoc.org/gopkg.in/telegram-bot-api.v4
+Документация телеграма по ботам:
+* https://core.telegram.org/bots
+* https://core.telegram.org/bots/api
+* https://core.telegram.org/bots/faq
