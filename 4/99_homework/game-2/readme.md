@@ -23,3 +23,9 @@
 * https://core.telegram.org/bots
 * https://core.telegram.org/bots/api
 * https://core.telegram.org/bots/faq
+
+Менеджер завичсимостей:
+* https://getgb.io/
+* Но для локальной работы можете ставить и через go get -u
+
+Не забывайте компилировать приложение перед отправкой на хероку!
