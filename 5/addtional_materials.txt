@@ -4,3 +4,12 @@ http://go-database-sql.org/
 https://astaxie.gitbooks.io/build-web-application-with-golang/
 https://github.com/thewhitetulip/web-dev-golang-anti-textbook/
 https://codegangsta.gitbooks.io/building-web-apps-with-go/content/
+
+https://blog.golang.org/context
+https://habrahabr.ru/post/269299/
+
+https://godoc.org/github.com/go-sql-driver/mysql
+https://godoc.org/github.com/lib/pq
+https://godoc.org/github.com/bradfitz/gomemcache/memcache
+https://godoc.org/github.com/go-redis/redis
+https://godoc.org/gopkg.in/mgo.v2

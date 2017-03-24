@@ -5,5 +5,5 @@ CREATE TABLE `students` (
   `score` int NOT NULL
 );
 
-INSERT INTO "students" ("fio", "info", "score")
+INSERT INTO `students` (`fio`, `info`, `score`) 
 VALUES ('Vasily Romanov', 'company: Mail.ru Group', '10');
