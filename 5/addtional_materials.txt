@@ -1,0 +1,6 @@
+https://golang.org/pkg/database/sql/
+https://github.com/golang/go/wiki/SQLInterface
+http://go-database-sql.org/
+https://astaxie.gitbooks.io/build-web-application-with-golang/
+https://github.com/thewhitetulip/web-dev-golang-anti-textbook/
+https://codegangsta.gitbooks.io/building-web-apps-with-go/content/
