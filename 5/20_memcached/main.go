@@ -10,7 +10,7 @@ func getRecord(mkey string) *memcache.Item {
 	println("get", mkey)
 	// получаем одиночную запись
 	item, err := memcacheClient.Get(mkey)
-	// если записиь нету, то для этого есть специальная ошибка, её надо обрабатывать отдеьно, это почти штатная ситуация, а не что-то страшное
+	// если записи нету, то для этого есть специальная ошибка, её надо обрабатывать отдеьно, это почти штатная ситуация, а не что-то страшное
 	if err == memcache.ErrCacheMiss {
 		fmt.Println("Record not found in memcache")
 		return nil
@@ -73,6 +73,7 @@ func main() {
 	// уменьашем счетчик внутри на 1
 	afterDecrement, err := memcacheClient.Decrement(mkey, uint64(1))
 	PanicOnErr(err)
+	fmt.Println("afterDecrement by 1 ", mkey, "is", afterDecrement)
 
 	// для несуществующей записи инкремент невозможен
 	afterIncrement, err = memcacheClient.Increment(mkey+"_not_exist", uint64(1))

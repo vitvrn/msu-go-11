@@ -11,5 +11,5 @@ https://habrahabr.ru/post/269299/
 https://godoc.org/github.com/go-sql-driver/mysql
 https://godoc.org/github.com/lib/pq
 https://godoc.org/github.com/bradfitz/gomemcache/memcache
-https://godoc.org/github.com/go-redis/redis
+https://godoc.org/github.com/garyburd/redigo/redis
 https://godoc.org/gopkg.in/mgo.v2
