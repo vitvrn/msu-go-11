@@ -13,3 +13,6 @@ https://godoc.org/github.com/lib/pq
 https://godoc.org/github.com/bradfitz/gomemcache/memcache
 https://godoc.org/github.com/garyburd/redigo/redis
 https://godoc.org/gopkg.in/mgo.v2
+http://goinbigdata.com/how-to-build-microservice-with-mongodb-in-golang/
+http://jinzhu.me/gorm/
+http://motion-express.com/blog/gorm:-a-simple-guide-on-crud
