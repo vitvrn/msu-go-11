@@ -16,3 +16,4 @@ https://godoc.org/gopkg.in/mgo.v2
 http://goinbigdata.com/how-to-build-microservice-with-mongodb-in-golang/
 http://jinzhu.me/gorm/
 http://motion-express.com/blog/gorm:-a-simple-guide-on-crud
+https://godoc.org/github.com/jinzhu/gorm
