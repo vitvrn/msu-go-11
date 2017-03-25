@@ -61,7 +61,6 @@ func main() {
 	PanicOnErr(err)
 	fmt.Printf("Second Student: %+v\n", nonExistentSturent)
 
-	secondStudent.Info = "all records"
 	collection.UpdateAll(
 		bson.M{"fio": "Ivan Ivanov"},
 		bson.M{
@@ -75,6 +74,7 @@ func main() {
 	err = collection.Find(bson.M{"_id": id}).One(&nonExistentSturent)
 	PanicOnErr(err)
 	fmt.Printf("Second Student after update: %+v\n", nonExistentSturent)
+
 }
 
 //PanicOnErr panics on error

@@ -28,8 +28,8 @@ func main() {
 	var err error
 	// создаём структуру базы
 	// но соединение происходит только при мервом запросе
-	db, err = sql.Open("mysql", "root@tcp(localhost:3360)/msu-go-11?charset=utf8")
-	// db, err := sql.Open("mysql", "root@tcp(localhost:3306)/msu-go-11?charset=utf8")
+	// db, err = sql.Open("mysql", "root@tcp(localhost:3360)/msu-go-11?charset=utf8")
+	db, err := sql.Open("mysql", "root@tcp(localhost:3306)/msu-go-11?charset=utf8")
 	PanicOnErr(err)
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {

@@ -82,10 +82,10 @@ func main() {
 
 	// использование prepared statements
 	// Prepare подготовливает запись ( шлёт запрос на сервере, там он парсится и готов принимать данные)
-	stmt, err := db.Prepare("UPDATE students SET info = $1, score = $2 WHERE id = $3")
+	stmt, err := db.Prepare("UPDATE students SET info = $1, score = $2 WHERE id = $2")
 	PanicOnErr(err)
 	// Exec для prepares statement отправляет даныне на сервер - там запрос уже распашрен, только исполняется с новыми данными
-	result, err = stmt.Exec("prapared statements update", lastID, lastID)
+	result, err = stmt.Exec("prapared statements update", lastID)
 	PanicOnErr(err)
 
 	affected, err = result.RowsAffected()

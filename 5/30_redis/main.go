@@ -10,30 +10,33 @@ var (
 	c redis.Conn
 )
 
-func getRecord(mkey string) string {
+func getRecord(mkey string) (string, error) {
 	println("get", mkey)
 	// получает запись, https://redis.io/commands/get
-	item, err := redis.String(c.Do("GET", mkey))
+	data, err := c.Do("GET", mkey)
+	item, err := redis.String(data, err)
 	// если записи нету, то для этого есть специальная ошибка, её надо обрабатывать отдеьно, это почти штатная ситуация, а не что-то страшное
 	if err == redis.ErrNil {
 		fmt.Println("Record not found in redis (return value is nil)")
-		return ""
+		return "", redis.ErrNil
 	} else if err != nil {
+		return "", err
 		PanicOnErr(err)
 	}
-	return item
+	return item, nil
 }
 
 func main() {
 	var err error
 	// соединение
 	c, err = redis.DialURL("redis://user:@localhost:6379/0")
+	// c, err = redis.DialURL(os.Getenv("REDIS_URL"))
 	PanicOnErr(err)
 	defer c.Close()
 
 	mkey := "record_21"
 
-	item := getRecord(mkey)
+	item, err := getRecord(mkey)
 	fmt.Printf("first get %+v\n", item)
 
 	ttl := 5
@@ -45,7 +48,7 @@ func main() {
 	}
 
 	time.Sleep(time.Microsecond)
-	// time.Sleep( (ttl+1)*time.Second)
+	// time.Sleep(7 * time.Second)
 
 	item = getRecord(mkey)
 	fmt.Printf("second get %+v\n", item)
@@ -66,6 +69,7 @@ func main() {
 
 	keys := []interface{}{mkey, mkey + "_not_exist", "sure_not_exist"}
 
+	// https: //redis.io/commands/mget
 	reply, err := redis.Strings(c.Do("MGET", keys...))
 	PanicOnErr(err)
 	fmt.Println(reply)

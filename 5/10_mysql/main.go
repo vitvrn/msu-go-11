@@ -6,6 +6,10 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
+func init() {
+	println("on start")
+}
+
 var (
 	db *sql.DB
 )
@@ -27,8 +31,10 @@ func main() {
 	var err error
 	// создаём структуру базы
 	// но соединение происходит только при мервом запросе
-	db, err = sql.Open("mysql", "root@tcp(localhost:3306)/msu-go-11?charset=utf8")
+	db, err = sql.Open("mysql", "root@tcp(localhost:3306)/msu-go-11?charset=utf8&interpolateParams=true")
 	PanicOnErr(err)
+
+	db.SetMaxOpenConns(10)
 
 	// проверяем что подключение реально произошло ( делаем запрос )
 	err = db.Ping()
@@ -36,14 +42,16 @@ func main() {
 
 	// итерируемся по многим записям
 	// Exec исполняет запрос и возвращает записи
-	rows, err := db.Query("SELECT fio FROM students")
+	rows, err := db.Query("SELECT fio, score FROM students")
 	PanicOnErr(err)
 	for rows.Next() {
 		var fio string
-		err = rows.Scan(&fio)
+		var score string
+		err = rows.Scan(&fio, &score)
 		PanicOnErr(err)
-		fmt.Println("rows.Next fio: ", fio)
+		fmt.Println("rows.Next fio: ", fio, score)
 	}
+	// надо закрывать соединения, иначе будем течь
 	rows.Close()
 
 	var fio string
@@ -91,12 +99,16 @@ func main() {
 	// Exec для prepares statement отправляет даныне на сервер - там запрос уже распашрен, только исполняется с новыми данными
 	result, err = stmt.Exec("prapared statements update", lastID, lastID)
 	PanicOnErr(err)
+	result, err = stmt.Exec("8 update", lastID, 8)
+	PanicOnErr(err)
 
 	affected, err = result.RowsAffected()
 	PanicOnErr(err)
 	fmt.Println("Update - RowsAffected", affected)
 
 	PrintByID(lastID)
+
+	return
 
 	fmt.Println("OpenConnections", db.Stats().OpenConnections)
 

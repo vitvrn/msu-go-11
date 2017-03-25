@@ -54,9 +54,9 @@ func main() {
 	PrintByID(100500)
 
 	// выборка по всем студентам
-	all := []Student{}
-	db.Find(&all)
-	for i, v := range all {
+	allStudents := []Student{}
+	db.Find(&allStudents)
+	for i, v := range allStudents {
 		fmt.Printf("students[%d] %+v\n", i, v)
 	}
 
@@ -73,6 +73,8 @@ func main() {
 	newStudent.Score = 10
 	db.Save(newStudent)
 	PrintByID(newStudent.ID)
+
+	return
 
 }
 

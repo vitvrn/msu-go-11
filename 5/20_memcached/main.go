@@ -44,9 +44,10 @@ func main() {
 	PanicOnErr(err)
 
 	time.Sleep(time.Microsecond)
-	// time.Sleep( (ttl+1)*time.Second)
+	// time.Sleep(7 * time.Second)
 
 	item = getRecord(mkey)
+
 	// second get &{Key:record_21 Value:[49] Flags:0 Expiration:0 casid:10977}
 	// Value:[49] возвращается слайс байт!
 	fmt.Printf("second get %+v\n", item)
@@ -54,7 +55,7 @@ func main() {
 	// Add добавляет запись если её ещё не было
 	err = memcacheClient.Add(&memcache.Item{
 		Key:        mkey,
-		Value:      []byte("1"),
+		Value:      []byte("2"),
 		Expiration: int32(ttl),
 	})
 	// если запись не была добавлена, то вернётся соотвтетсувющая ошибка
@@ -63,6 +64,7 @@ func main() {
 	} else if err != nil {
 		PanicOnErr(err)
 	}
+	item = getRecord(mkey)
 	fmt.Printf("third get %+v\n", item)
 
 	// увеличиваем счетчик внутри на 2
