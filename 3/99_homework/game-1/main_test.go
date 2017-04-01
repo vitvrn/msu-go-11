@@ -87,7 +87,7 @@ func TestGame0(t *testing.T) {
 
 		for _, item := range commands {
 			players["Tristan"].HandleInput(item.command)
-			time.Sleep(time.Microsecond)
+			time.Sleep(time.Millisecond)
 			runtime.Gosched() // дадим считать ответ
 			mu.Lock()
 			answer := lastOutput["Tristan"]
@@ -140,7 +140,7 @@ var game1Cases = [][]game1Case{
 			map[string]string{
 				"Tristan": "Izolda говорит: Пора топать в универ",
 				"Izolda":  "Izolda говорит: Пора топать в универ",
-				},
+			},
 		}, // действие сказать
 		{
 			4,
@@ -214,7 +214,7 @@ func TestGame1(t *testing.T) {
 		for _, item := range commands {
 			lastOutput = map[string]string{}
 			players[item.player].HandleInput(item.command)
-			time.Sleep(time.Microsecond)
+			time.Sleep(time.Millisecond)
 			runtime.Gosched() // дадим считать ответ
 			if !reflect.DeepEqual(lastOutput, item.answers) {
 				t.Error("case:", caseNum, item.step,
