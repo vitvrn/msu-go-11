@@ -2,7 +2,8 @@
 Есть пример с тегированным кешем и корректным перестроением кеша
 
 Надо совместить эти 2 примера в 1 и сделать удобную функцию
-func TcacheGet(mkey string, buildCache funcToRebuild() (interface{}, []slice) )
+
+func TcacheGet(mkey string, buildCache funcToRebuild() (interface{}, []string) )
 
 В неё мы передаём ключ mkey и функцию для перестроения buildCache
 
