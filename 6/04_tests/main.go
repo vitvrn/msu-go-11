@@ -1,5 +1,7 @@
 package main
 
+import "github.com/pkg/errors"
+
 func main() {
 
 }
@@ -8,8 +10,16 @@ func Sum(a int, b int) int {
 	return a + b
 }
 
-func Devision(a int, b int) int {
+func Division(a int, b int) int {
 	return a / b
+}
+
+func TrueDivision(a int, b int) (int, error) {
+	if b == 0 {
+		return 0, errors.New("Division by zero")
+	}
+
+	return a / b, nil
 }
 
 type User struct {
@@ -25,3 +35,4 @@ func AddUser(users *[]User, name string, age int) {
 
 	*users = append(*users, user)
 }
+
