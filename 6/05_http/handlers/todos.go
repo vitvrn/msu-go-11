@@ -12,7 +12,6 @@ func (h Handler) HandleTodos(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(r.Method, r.URL.Path)
 	defer r.Body.Close()
 
-	// разные методы обрабатываются по-разному
 	switch r.Method {
 	case http.MethodGet:
 		productsJson, _ := json.Marshal(h.Todos)
