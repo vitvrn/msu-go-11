@@ -76,7 +76,6 @@ var messagesTmpl = `<html>
 func checkSession(r *http.Request) bool {
 	// обработка сессии. код взять из 5/02_session
 	// не используйте эитот подход в продакшене
-
 	sessionID, err := r.Cookie("session_id")
 	if err == http.ErrNoCookie {
 		return false
@@ -85,7 +84,6 @@ func checkSession(r *http.Request) bool {
 	}
 	_, ok := sessions[sessionID.Value]
 	if !ok {
-
 		return false
 	}
 	return true
@@ -156,6 +154,10 @@ func main() {
 
 	// сервисный метод для очистки комментариев
 	http.HandleFunc("/clear_comments", func(w http.ResponseWriter, r *http.Request) {
+		if !checkSession(r) {
+			w.Write([]byte(loginFormTmplRaw))
+			return
+		}
 		messages = map[int]*Msg{}
 		http.Redirect(w, r, "/", http.StatusFound)
 	})

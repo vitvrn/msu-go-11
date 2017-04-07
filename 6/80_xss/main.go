@@ -49,23 +49,29 @@ var messagesTmpl = `<html><body>
     {{end}}
 </body></html>`
 
+func checkSession(r *http.Request) bool {
+	// обработка сессии. код взять из 5/02_session
+	// не используйте эитот подход в продакшене
+	sessionID, err := r.Cookie("session_id")
+	if err == http.ErrNoCookie {
+		return false
+	} else if err != nil {
+		PanicOnErr(err)
+	}
+	_, ok := sessions[sessionID.Value]
+	if !ok {
+		return false
+	}
+	return true
+}
+
 func main() {
 
 	tmpl := template.New("main")
 	tmpl, _ = tmpl.Parse(messagesTmpl)
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		// обработка сессии. код взять из 5/02_session
-		// не используйте эитот подход в продакшене
-		sessionID, err := r.Cookie("session_id")
-		if err == http.ErrNoCookie {
-			w.Write([]byte(loginFormTmplRaw))
-			return
-		} else if err != nil {
-			PanicOnErr(err)
-		}
-		_, ok := sessions[sessionID.Value]
-		if !ok {
+		if !checkSession(r) {
 			w.Write([]byte(loginFormTmplRaw))
 			return
 		}
@@ -85,6 +91,10 @@ func main() {
 	*/
 	// это выведет на экран куки сайта. дальше с ними можно сделать всё что угодно - например отправить ан внешний сервис, который с сессией этого юзера будет слать спам пока может
 	http.HandleFunc("/comment", func(w http.ResponseWriter, r *http.Request) {
+		if !checkSession(r) {
+			w.Write([]byte(loginFormTmplRaw))
+			return
+		}
 		r.ParseForm()
 		commentText := r.Form["comment"][0]
 		messages = append(messages, commentText)
@@ -93,6 +103,11 @@ func main() {
 
 	// сервисный метод для очистки комментариев
 	http.HandleFunc("/clear_comments", func(w http.ResponseWriter, r *http.Request) {
+		if !checkSession(r) {
+			w.Write([]byte(loginFormTmplRaw))
+			return
+		}
+
 		messages = []string{}
 		http.Redirect(w, r, "/", http.StatusFound)
 	})
