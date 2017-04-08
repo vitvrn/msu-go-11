@@ -8,6 +8,8 @@ import (
 )
 
 func TestGetTodos(t *testing.T) {
+
+	// Инициализируем хендлеры со своими данными
 	h := Handler{
 		Todos: &[]Todo{
 			{Name: "Test", Done: false},

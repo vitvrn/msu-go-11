@@ -8,18 +8,19 @@ import (
 )
 
 func TestSum(t *testing.T) {
+	// В Go нет встроенной функции assert, все проверки происходят так
 	if Sum(1, 3) != 4 {
 		t.Error("ACHTUNG!", "expected", 4, "got", Sum(1, 3))
 	}
 }
 
-func TestDevision(t *testing.T) {
-	t.Parallel()
+func TestDivision(t *testing.T) {
 	defer func() {
 		recover()
 	}()
 
 	if Division(2, 1) != 2 {
+		// Можно фейлить тест а-ля Printf
 		t.Errorf("expected %d, got %d", 2, Division(2, 1))
 	}
 
@@ -33,6 +34,7 @@ func TestAddUser(t *testing.T) {
 	AddUser(&users, "Vasya", 32)
 
 	if len(users) == 0 {
+		// Fatal не продолжит выполнение кейса
 		t.Fatal("Empty slice")
 	}
 
@@ -43,6 +45,7 @@ func TestAddUser(t *testing.T) {
 		},
 	}
 
+	// Для сравнения слайсов и структур нужно использовать DeepEqual
 	if !reflect.DeepEqual(users, expected) {
 		t.Errorf("expected %+v, got %+v", expected, users)
 	}
@@ -78,6 +81,7 @@ func TestTable(t *testing.T) {
 			Err:    errors.New("Division by zero"),
 		},
 	}
+
 
 	for _, testCase := range data {
 		res, err := TrueDivision(testCase.A, testCase.B)
