@@ -2,18 +2,19 @@ package main
 
 import (
 	"fmt"
-	"golang.org/x/net/context"
-	"google.golang.org/grpc"
 	"math/rand"
 	"net"
 	"time"
+
+	"golang.org/x/net/context"
+	"google.golang.org/grpc"
 	// не делайте так! не привыкайте к относительным путём
 	// тут так только для того чтобы когда вы клонили себе репу - не надо было менять путь
 	"../session"
 )
 
 // реализация grpc-сервиса
-// серви сдолжен удволетвоярть инфтерфейсу AuthCheckerClient (авто-сгенерённому в session.pb.go)
+// сервис должен удовлетворять инфтерфейсу AuthCheckerClient (авто-сгенерённому в session.pb.go)
 /*
 type AuthCheckerClient interface {
 	// создаёт сессию - принимает данные юзера, возвращает ID вессии
