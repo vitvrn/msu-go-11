@@ -78,6 +78,8 @@ func embedding() {
 // Но, опять же, мы теряем все compile time проверки
 // и придётся далее угадывать подлежащие структуры
 
+// https://golang.org/pkg/encoding/json/#RawMessage
+
 func pointers() {
 	var parsed map[string]interface{}
 
