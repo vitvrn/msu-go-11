@@ -11,8 +11,9 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/", Handler)
-
 	http.ListenAndServe(":8080", nil)
 }
 
+// cd $GOPATH/src/github.com/uber/go-torch
+// git clone https://github.com/brendangregg/FlameGraph.git
 
