@@ -14,6 +14,7 @@ func main() {
 	http.ListenAndServe(":8080", nil)
 }
 
+// go tool pprof main http://127.0.0.1:8080/debug/pprof/profile\?seconds\=5
+
 // cd $GOPATH/src/github.com/uber/go-torch
 // git clone https://github.com/brendangregg/FlameGraph.git
-

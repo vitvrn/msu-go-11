@@ -1,8 +1,12 @@
 package main
 
+// профилируем память
+// go tool pprof -alloc_space main http://127.0.0.1:8080/debug/pprof/heap\?seconds\=20
+// main - путь к бинарнику
+
 import (
 	"net/http"
-	_ "net/http/pprof"
+	_ "net/http/pprof" // пвстраивает проилировщик в программу
 )
 
 func WaitingFunc(c chan struct{}) {
@@ -21,5 +25,3 @@ func main() {
 
 	http.ListenAndServe(":8080", nil)
 }
-
-

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"strings"
 	"regexp"
+	"strings"
 	"testing"
 )
 
@@ -10,6 +10,7 @@ var haystack = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac
 Nullam maximus odio vitae augue fermentum laoreet eget scelerisque ligula. Praesent pretium eu lacus in ornare. Maecenas fermentum id sapien non faucibus. Donec est tellus, auctor eu iaculis quis, accumsan vitae ligula. Fusce dolor nisl, pharetra eu facilisis non, hendrerit ac turpis. Pellentesque imperdiet aliquam quam in luctus. Curabitur ut orci sodales, faucibus nunc ac, maximus odio. Vivamus vitae nulla posuere, pellentesque quam posuere`
 
 // go test -bench=. -cpuprofile cpu.out
+// go tool pprof <бинарник(02_pprof.test)> cpu.out
 
 func BenchmarkSubstring(b *testing.B) {
 	for i := 0; i < b.N; i++ {

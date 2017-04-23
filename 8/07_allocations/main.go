@@ -1,5 +1,9 @@
 package main
 
+// профалинг бенчмарков
+// go test -bench=. -benchmem -memprofile=mem.out
+// go tool pprof -alloc_space 07_allocations.test mem.out
+
 import (
 	"fmt"
 )
