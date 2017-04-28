@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	_ "net/http/pprof"
 	"strconv"
 	"io/ioutil"
 )
@@ -69,5 +70,5 @@ func main() {
 
 	})
 
-	http.ListenAndServe(":8081", nil)
+	http.ListenAndServe(":8080", nil)
 }
