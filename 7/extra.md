@@ -8,3 +8,7 @@ https://github.com/go-qbit/template
 [Генерация кода в Go](https://habrahabr.ru/post/269887/)
 
 [http client на reflect](https://github.com/dforsyth/reflectclient)
+
+https://golang.org/src/go/ast/example_test.go
+
+https://github.com/golang/tools/blob/master/cmd/stringer/stringer.go
