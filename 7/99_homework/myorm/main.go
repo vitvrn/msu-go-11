@@ -18,7 +18,7 @@ func main() {
 
 	user.SetDB(db)
 
-	u = user.User{}
+	u := user.User{}
 	err = u.FindByPK(1)
 	PanicOnErr(err)
 	fmt.Printf("найден по первичному ключу: %+v\n", u)
@@ -35,7 +35,7 @@ func main() {
 	newUser.Info = "occupation: programmer"
 	newUser.Balance = 10
 	newUser.Status = 1
-	newUser.SomeInnerFlag = 1
+	newUser.SomeInnerFlag = true
 	err = newUser.Update()
 	PanicOnErr(err)
 
