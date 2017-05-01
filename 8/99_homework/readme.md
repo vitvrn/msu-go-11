@@ -18,7 +18,7 @@
 3. под Windows я никогда не пробовал профайлить и не знаю, с каким трудностями вы можете строкнуться, используйте Linux
 4. МОжете менять количество файлов и юзеров в `datagen/main.go` во время работы
 
-Материалы в помощь:
+Материалы в помощь (читайте внимательно, там многое описано что сделать надо):
 * https://blog.golang.org/profiling-go-programs
 * https://habrahabr.ru/company/badoo/blog/301990/
 * https://habrahabr.ru/company/badoo/blog/324682/
