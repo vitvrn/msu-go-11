@@ -7,5 +7,5 @@ type User struct {
 	Info          string `myorm:"null"`            // поле может иметь тип null
 	Balance       int
 	Status        int
-	someInnerFlag bool `myorm:"-"` //поля нет в таблице, игнорируем его
+	SomeInnerFlag bool `myorm:"-"` //поля нет в таблице, игнорируем его
 }
