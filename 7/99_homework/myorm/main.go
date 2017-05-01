@@ -35,7 +35,7 @@ func main() {
 	newUser.Info = "occupation: programmer"
 	newUser.Balance = 10
 	newUser.Status = 1
-	newUser.someInnerFlag = 1
+	newUser.SomeInnerFlag = 1
 	err = newUser.Update()
 	PanicOnErr(err)
 
