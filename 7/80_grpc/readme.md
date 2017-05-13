@@ -19,3 +19,14 @@
 * https://developers.google.com/protocol-buffers/docs/gotutorial
 * https://github.com/grpc/grpc-go/tree/master/examples
 * https://habrahabr.ru/company/infopulse/blog/265805/
+
+windows:
+Download protoc-win32.zip from https://developers.google.com/protocol-buffers/docs/downloads
+Unzip and add location of the protoc.exe to your PATH environment variable
+Run `protoc --version` from command prompt to verify
+Verify the your GOPATH environment variable is set
+Run `go get -u github.com/golang/protobuf/protoc-gen-go` from command prompt. This should install the binary to %GOPATH%/bin
+Add `%GOPATH%/bin` to your PATH environment variable
+Open a new command prompt, navigate to your .proto file, run `protoc --go_out=. *.proto` 
+
+если ругается - надо читобы были доступны protoc.exe и protoc-gen-go.exe - прописать в PATH путь до них
