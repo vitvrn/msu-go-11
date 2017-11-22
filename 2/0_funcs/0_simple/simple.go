@@ -9,6 +9,14 @@ func main() {
 	res := sumMore(stuff...)
 
 	fmt.Println("Res", res)
+
+	//vit:
+	var err error
+	res, err = sumNatural2(1, 2, -1)
+	fmt.Println("Res: ", res, ", err: ", err)
+	res, err = sumNatural2(1, 2, 4)
+	fmt.Println("Res: ", res, ", err: ", err)
+	//	fmt.Println("Res, err: ", sumNatural2(1, 2, 5))
 }
 
 func showMeTheMoney() {
@@ -55,5 +63,6 @@ func sumNatural2(stuff ...int) (res int, err error) {
 		}
 		res += stuff[i]
 	}
-	return res, err
+	//	return res, err
+	return //res, err //vit
 }

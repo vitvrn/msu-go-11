@@ -16,28 +16,31 @@ func main() {
 // testPanic simulates a function that encounters a panic to
 // test our catchPanic function.
 func testPanic() (err error) {
-	var ok bool
-	// Schedule the catchPanic function to be called when
-	// the testPanic function returns.
-	defer func() {
-		// Check if a panic occurred.
-		if r := recover(); r != nil {
-			if err, ok = r.(error); ok {
-				fmt.Println(err)
-			}
-			fmt.Println("PANIC Deferred")
-			// Capture the stack trace.
-			buf := make([]byte, 10000)
-			runtime.Stack(buf, false)
-			fmt.Println("Stack Trace:", string(buf))
-			// If the caller wants the error back provide it.
-			if err != nil {
-				err = fmt.Errorf("%v", r)
-			}
-		}
-	}()
+	//vit:
+	defer catchPanic(err)
+	//	var ok bool
+	//	// Schedule the catchPanic function to be called when
+	//	// the testPanic function returns.
+	//	defer func() {
+	//		// Check if a panic occurred.
+	//		if r := recover(); r != nil {
+	//			if err, ok = r.(error); ok {
+	//				fmt.Println(err)
+	//			}
+	//			fmt.Println("PANIC Deferred")
+	//			// Capture the stack trace.
+	//			buf := make([]byte, 10000)
+	//			runtime.Stack(buf, false)
+	//			fmt.Println("Stack Trace:", string(buf))
+	//			// If the caller wants the error back provide it.
+	//			if err != nil {
+	//				err = fmt.Errorf("%v", r)
+	//			}
+	//		}
+	//	}()
 
-	defer stuff.GetFileDesc().Close()
+	//vit//:
+	//	defer stuff.GetFileDesc().Close()
 
 	fmt.Println("Start Test")
 
@@ -61,7 +64,7 @@ func catchPanic(err error) {
 	// Check if a panic occurred.
 	if r := recover(); r != nil {
 		if err, ok = r.(error); ok {
-			fmt.Println()
+			fmt.Println(err)
 		}
 		fmt.Println("PANIC Deferred")
 

@@ -26,12 +26,17 @@ func main() {
 		fmt.Println("Named Type Error")
 	}
 
+	//vit: ?????
+	//	fmt.Printf("Hello: %T %v \n", ErrStructType, ErrStructType)
+
 	if ErrStructType == errors.New("EOF") {
 		fmt.Println("Struct Type Error")
 	}
 
 	err := BadFunc()
 
+	//vit: можно просто
+	//switch err.(type)
 	switch err := err.(type) {
 	case nil:
 		// call succeeded, nothing to do

@@ -30,10 +30,17 @@ func (m Mig45) Fly() {
 	fmt.Println("Mig Flied away")
 }
 
+//vit:
+func (m Mig45) Greet() {}
+
 func main() {
 	duckPlane := Bird{"Duck plane"}
 
 	GoFly(duckPlane)
+
+	//vit:
+	mig := Mig45{}
+	GoFly(mig)
 }
 
 func GoFly(f Flyer) {

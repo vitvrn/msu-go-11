@@ -9,10 +9,19 @@ func main() {
 
 	if f := getNil(10); f != nil {
 		fmt.Println("i'm not nill")
+		//vit: неинициализированный указатель *myError - НЕ НИЛ!!! (тип myError!!!)
+		fmt.Println("f: ", f)
 	}
 
 	if f := getNil("2nd"); f == nil {
 		fmt.Println("but i actually am nil")
+		//vit: возвращенный (через ключевое слово "nil") nil (тип error)
+		fmt.Println("f: ", f)
+	}
+
+	//vit: возвращенный через ключевое слово nil (тип error)
+	if f := getTrueNil(); f == nil {
+		fmt.Println("is nill")
 	}
 }
 

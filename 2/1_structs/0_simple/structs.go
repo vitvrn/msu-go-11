@@ -32,4 +32,9 @@ func main() {
 	fmt.Println("Flag", e2.Flag)
 	fmt.Println("Counter", e2.counter)
 	fmt.Println("Pi", e2.pi)
+
+	//vit:
+	fmt.Println("Flag", e3.Flag)
+	fmt.Println("Counter", e3.counter)
+	fmt.Println("Pi", e3.pi)
 }

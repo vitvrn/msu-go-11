@@ -28,6 +28,6 @@ func (s SecretAgent) GetName() string {
 func main() {
 	sa := SecretAgent{Person: Person{"James", "12312321321"}, LicenseToKill: true}
 
-	//fmt.Printf("%T %+v\n", sa, sa)
+	//	fmt.Printf("%T %+v\n", sa, sa)
 	fmt.Println("secret inn", sa.GetName())
 }
